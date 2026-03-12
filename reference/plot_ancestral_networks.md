@@ -64,20 +64,20 @@ network at a given time slice.
 
 ``` r
 if (FALSE) { # \dontrun{
-  # read data that comes with the package
-  data_path <- system.file("extdata", package = "evolnets")
-  tree <- read_tree_from_revbayes(paste0(data_path,"/tree_pieridae.tre"))
-  host_tree <- ape::read.tree(paste0(data_path,"/host_tree_pieridae.phy"))
-  history <- read_history(paste0(data_path,"/history_thin_pieridae.txt"), burnin = 0)
+# read data that comes with the package
+data_path <- system.file("extdata", package = "evolnets")
+tree <- read_tree_from_revbayes(paste0(data_path, "/tree_pieridae.tre"))
+host_tree <- ape::read.tree(paste0(data_path, "/host_tree_pieridae.phy"))
+history <- read_history(paste0(data_path, "/history_thin_pieridae.txt"), burnin = 0)
 
-  # find and match modules of summary networks at ages
-  ages <- c(60, 50, 40, 0)
-  at_ages <- posterior_at_ages(history, ages, tree, host_tree)
-  summary_networks <- get_summary_networks(at_ages, threshold = 0.5, weighted = TRUE)
-  all_mod <- modules_across_ages(summary_networks, tree)
+# find and match modules of summary networks at ages
+ages <- c(60, 50, 40, 0)
+at_ages <- posterior_at_ages(history, ages, tree, host_tree)
+summary_networks <- get_summary_networks(at_ages, threshold = 0.5, weighted = TRUE)
+all_mod <- modules_across_ages(summary_networks, tree)
 
-  # plot
-  plot <- plot_ancestral_networks(summary_networks, all_mod, tree)
-  patchwork::wrap_plots(plot, guides = "collect")
+# plot
+plot <- plot_ancestral_networks(summary_networks, all_mod, tree)
+patchwork::wrap_plots(plot, guides = "collect")
 } # }
 ```

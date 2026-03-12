@@ -46,12 +46,12 @@ rate_gl(history, tree)
 ``` r
 # read data that comes with the package
 data_path <- system.file("extdata", package = "evolnets")
-tree <- read_tree_from_revbayes(paste0(data_path,"/tree_pieridae.tre"))
-history <- read_history(paste0(data_path,"/history_thin_pieridae.txt"), burnin = 0)
+tree <- read_tree_from_revbayes(paste0(data_path, "/tree_pieridae.tre"))
+history <- read_history(paste0(data_path, "/history_thin_pieridae.txt"), burnin = 0)
 
 # all events
 n_events <- count_events(history)
-rate <- effective_rate(history,tree)
+rate <- effective_rate(history, tree)
 
 # gains and losses separately
 gl_events <- count_gl(history)

@@ -129,22 +129,22 @@ A `ggplot` object.
 
 ``` r
 if (FALSE) { # \dontrun{
-  # read data that comes with the package
-  data_path <- system.file("extdata", package = "evolnets")
-  tree <- read_tree_from_revbayes(paste0(data_path,"/tree_pieridae.tre"))
-  host_tree <- read.tree(paste0(data_path,"/host_tree_pieridae.phy"))
-  history <- read_history(paste0(data_path,"/history_thin_pieridae.txt"), burnin = 0)
-  extant_net <- read.csv(paste0(data_path,"/interaction_matrix_pieridae.csv"), row.names = 1)
+# read data that comes with the package
+data_path <- system.file("extdata", package = "evolnets")
+tree <- read_tree_from_revbayes(paste0(data_path, "/tree_pieridae.tre"))
+host_tree <- read.tree(paste0(data_path, "/host_tree_pieridae.phy"))
+history <- read_history(paste0(data_path, "/history_thin_pieridae.txt"), burnin = 0)
+extant_net <- read.csv(paste0(data_path, "/interaction_matrix_pieridae.csv"), row.names = 1)
 
-  # calculate posterior probability of interactions at internal nodes
-  at_nodes <- posterior_at_nodes(history, tree, host_tree, 66 + 1:65)
+# calculate posterior probability of interactions at internal nodes
+at_nodes <- posterior_at_nodes(history, tree, host_tree, 66 + 1:65)
 
-  # find modules in the extant network
-  mods <- mycomputeModules(extant_net)
+# find modules in the extant network
+mods <- mycomputeModules(extant_net)
 
-  # plot ancestral states
-  plot_ancestral_states(tree, at_nodes, mods)
-  # Manual colors
-  plot_ancestral_states(tree, at_nodes, mods, colors = rainbow(20))
+# plot ancestral states
+plot_ancestral_states(tree, at_nodes, mods)
+# Manual colors
+plot_ancestral_states(tree, at_nodes, mods, colors = rainbow(20))
 } # }
 ```

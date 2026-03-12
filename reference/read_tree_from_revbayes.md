@@ -22,5 +22,7 @@ to place the inferred ancestral states in the symbiont tree.
 ## Examples
 
 ``` r
-if (FALSE) tree <- read_tree_from_revbayes("symbiont_tree.tre") # \dontrun{}
+if (FALSE) { # \dontrun{
+tree <- read_tree_from_revbayes("symbiont_tree.tre")
+} # }
 ```

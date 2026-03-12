@@ -30,6 +30,6 @@ objects for each age.
 
 ``` r
 if (FALSE) { # \dontrun{
- unmatched_modules <- modules_from_summary_networks(summary_networks)
+unmatched_modules <- modules_from_summary_networks(summary_networks)
 } # }
 ```

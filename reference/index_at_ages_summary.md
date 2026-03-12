@@ -55,9 +55,9 @@ A data.frame of z-scores and p-values across networks.
 ``` r
 # read data that comes with the package
 data_path <- system.file("extdata", package = "evolnets")
-tree <- read_tree_from_revbayes(paste0(data_path,"/tree_pieridae.tre"))
-host_tree <- ape::read.tree(paste0(data_path,"/host_tree_pieridae.phy"))
-history <- read_history(paste0(data_path,"/history_thin_pieridae.txt"))
+tree <- read_tree_from_revbayes(paste0(data_path, "/tree_pieridae.tre"))
+host_tree <- ape::read.tree(paste0(data_path, "/host_tree_pieridae.phy"))
+history <- read_history(paste0(data_path, "/history_thin_pieridae.txt"))
 
 # get ancestral networks at ages in the past
 ages <- c(60, 50, 40, 0)

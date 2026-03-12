@@ -84,14 +84,14 @@ samples is the number of iterations in `history`.
 ``` r
 # read symbiont and host tree
 data_path <- system.file("extdata", package = "evolnets")
-tree <- read_tree_from_revbayes(paste0(data_path,"/tree_pieridae.tre"))
-host_tree <- ape::read.tree(paste0(data_path,"/host_tree_pieridae.phy"))
+tree <- read_tree_from_revbayes(paste0(data_path, "/tree_pieridae.tre"))
+host_tree <- ape::read.tree(paste0(data_path, "/host_tree_pieridae.phy"))
 
 # read histories sampled during MCMC
-history <- read_history(paste0(data_path,"/history_thin_pieridae.txt"), burnin = 0)
+history <- read_history(paste0(data_path, "/history_thin_pieridae.txt"), burnin = 0)
 
 # get samples at ages
-ages <- c(80,70,0)
+ages <- c(80, 70, 0)
 at_ages <- posterior_at_ages(history, ages, tree, host_tree)
 samples_at_ages <- at_ages$samples
 

@@ -85,18 +85,18 @@ A list containing:
 
 ``` r
 if (FALSE) { # \dontrun{
-  ages <- c(60, 50, 40, 0)
-  at_ages <- posterior_at_ages(history, ages, tree, host_tree)
+ages <- c(60, 50, 40, 0)
+at_ages <- posterior_at_ages(history, ages, tree, host_tree)
 
-  weighted_net_50 <- get_summary_network(at_ages, pt = 0.5, weighted = TRUE)
-  all_mod <- modules_across_ages(weighted_net_50, tree)
+weighted_net_50 <- get_summary_network(at_ages, pt = 0.5, weighted = TRUE)
+all_mod <- modules_across_ages(weighted_net_50, tree)
 
-  # find modules for each sampled network
-  mod_samples <- modules_from_samples(at_ages)
+# find modules for each sampled network
+mod_samples <- modules_from_samples(at_ages)
 
-  # calculate support
-  support <- support_for_modules(mod_samples, all_mod)
-  support$plot
-  support$means
+# calculate support
+support <- support_for_modules(mod_samples, all_mod)
+support$plot
+support$means
 } # }
 ```

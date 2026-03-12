@@ -105,19 +105,19 @@ modules in the networks. If a <code>data.frame</code> is passed, it must contain
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span>  <span class="va">ages</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">60</span>, <span class="fl">50</span>, <span class="fl">40</span>, <span class="fl">0</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">at_ages</span> <span class="op">&lt;-</span> <span class="fu"><a href="posterior_at_ages.html">posterior_at_ages</a></span><span class="op">(</span><span class="va">history</span>, <span class="va">ages</span>, <span class="va">tree</span>, <span class="va">host_tree</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ages</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">60</span>, <span class="fl">50</span>, <span class="fl">40</span>, <span class="fl">0</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">at_ages</span> <span class="op">&lt;-</span> <span class="fu"><a href="posterior_at_ages.html">posterior_at_ages</a></span><span class="op">(</span><span class="va">history</span>, <span class="va">ages</span>, <span class="va">tree</span>, <span class="va">host_tree</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="va">weighted_net_50</span> <span class="op">&lt;-</span> <span class="fu">get_summary_network</span><span class="op">(</span><span class="va">at_ages</span>, pt <span class="op">=</span> <span class="fl">0.5</span>, weighted <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">all_mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="modules_across_ages.html">modules_across_ages</a></span><span class="op">(</span><span class="va">weighted_net_50</span>, <span class="va">tree</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">weighted_net_50</span> <span class="op">&lt;-</span> <span class="fu">get_summary_network</span><span class="op">(</span><span class="va">at_ages</span>, pt <span class="op">=</span> <span class="fl">0.5</span>, weighted <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">all_mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="modules_across_ages.html">modules_across_ages</a></span><span class="op">(</span><span class="va">weighted_net_50</span>, <span class="va">tree</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="co"># find modules for each sampled network</span></span></span>
-<span class="r-in"><span>  <span class="va">mod_samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="modules_from_samples.html">modules_from_samples</a></span><span class="op">(</span><span class="va">at_ages</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># find modules for each sampled network</span></span></span>
+<span class="r-in"><span><span class="va">mod_samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="modules_from_samples.html">modules_from_samples</a></span><span class="op">(</span><span class="va">at_ages</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="co"># calculate support</span></span></span>
-<span class="r-in"><span>  <span class="va">support</span> <span class="op">&lt;-</span> <span class="fu">support_for_modules</span><span class="op">(</span><span class="va">mod_samples</span>, <span class="va">all_mod</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">support</span><span class="op">$</span><span class="va">plot</span></span></span>
-<span class="r-in"><span>  <span class="va">support</span><span class="op">$</span><span class="va">means</span></span></span>
+<span class="r-in"><span><span class="co"># calculate support</span></span></span>
+<span class="r-in"><span><span class="va">support</span> <span class="op">&lt;-</span> <span class="fu">support_for_modules</span><span class="op">(</span><span class="va">mod_samples</span>, <span class="va">all_mod</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">support</span><span class="op">$</span><span class="va">plot</span></span></span>
+<span class="r-in"><span><span class="va">support</span><span class="op">$</span><span class="va">means</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

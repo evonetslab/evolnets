@@ -53,12 +53,12 @@ A data.frame of z-scores and p-values across samples and ages.
 ``` r
 # read data that comes with the package
 data_path <- system.file("extdata", package = "evolnets")
-tree <- read_tree_from_revbayes(paste0(data_path,"/tree_pieridae.tre"))
-host_tree <- ape::read.tree(paste0(data_path,"/host_tree_pieridae.phy"))
-history <- read_history(paste0(data_path,"/history_thin_pieridae.txt"), burnin = 0)
+tree <- read_tree_from_revbayes(paste0(data_path, "/tree_pieridae.tre"))
+host_tree <- ape::read.tree(paste0(data_path, "/host_tree_pieridae.phy"))
+history <- read_history(paste0(data_path, "/history_thin_pieridae.txt"), burnin = 0)
 
 # get sampled networks at ages in the past
-ages <- c(60,50,40,0)
+ages <- c(60, 50, 40, 0)
 samples_at_ages <- posterior_at_ages(history, ages, tree, host_tree)
 sampled_networks <- get_sampled_networks(samples_at_ages)
 

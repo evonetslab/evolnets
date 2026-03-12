@@ -42,9 +42,9 @@ A list with:
 ``` r
 # read data that comes with the package
 data_path <- system.file("extdata", package = "evolnets")
-tree <- read_tree_from_revbayes(paste0(data_path,"/tree_pieridae.tre"))
-host_tree <- ape::read.tree(paste0(data_path,"/host_tree_pieridae.phy"))
-history <- read_history(paste0(data_path,"/history_thin_pieridae.txt"), burnin = 0)
+tree <- read_tree_from_revbayes(paste0(data_path, "/tree_pieridae.tre"))
+host_tree <- ape::read.tree(paste0(data_path, "/host_tree_pieridae.phy"))
+history <- read_history(paste0(data_path, "/history_thin_pieridae.txt"), burnin = 0)
 
 # get ancestral summary networks
 ages <- c(60, 50, 40, 0)

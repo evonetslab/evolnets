@@ -27,5 +27,7 @@ A data.frame
 
 ``` r
 # read history file
-if (FALSE) history <- read_history("/path/history.txt", burnin = 0.2) # \dontrun{}
+if (FALSE) { # \dontrun{
+history <- read_history("/path/history.txt", burnin = 0.2)
+} # }
 ```
