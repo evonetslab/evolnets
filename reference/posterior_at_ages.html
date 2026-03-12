@@ -87,13 +87,21 @@ include both states (where 1 is a potential host and 2 an actual host).</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A list of three lists, containing:</p><ul><li><p>"<code>samples</code>" Arrays of samples x nodes x hosts, containing the state of each sample.</p></li>
-<li><p>"<code>post_states</code>" Arrays of nodes x hosts x state containing the posterior probability
-for each state.</p></li>
-<li><p>"<code>post_repertoires</code>" Arrays of nodes x hosts x repertoire containing the posterior
+    <p>A list of three lists, containing:</p>
+<dl><dt>"<code>samples</code>"</dt>
+<dd><p>Arrays of samples x nodes x hosts, containing the state of each sample.</p></dd>
+
+<dt>"<code>post_states</code>"</dt>
+<dd><p>Arrays of nodes x hosts x state containing the posterior probability
+for each state.</p></dd>
+
+<dt>"<code>post_repertoires</code>"</dt>
+<dd><p>Arrays of nodes x hosts x repertoire containing the posterior
 probability for 1) the <code>"realized"</code> repertoire which is defined as state 2, and 2) the
-<code>"fundamental"</code> repertoire which is defined as having any state (usually 1 or 2).</p></li>
-</ul><p>Each array in these lists is for one of the <code>ages</code>. The number of samples is the number of
+<code>"fundamental"</code> repertoire which is defined as having any state (usually 1 or 2).</p></dd>
+
+
+</dl><p>Each array in these lists is for one of the <code>ages</code>. The number of samples is the number of
 iterations in <code>history</code>.</p>
     </div>
 
@@ -125,7 +133,7 @@ iterations in <code>history</code>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>
