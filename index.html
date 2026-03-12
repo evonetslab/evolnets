@@ -31,7 +31,15 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
+<li class="nav-item"><a class="nav-link" href="articles/evolnets.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="articles/ancestral_networks.html">ancestral_networks</a></li>
+    <li><a class="dropdown-item" href="articles/ancestral_states.html">ancestral_states</a></li>
+  </ul>
+</li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -50,25 +58,31 @@
 </h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>RevBayes offers models to infer host-repertoire evolution, but no tools to parse the outputs. <em>evolnets</em> has the necessary tools to reconstruct ancestral ecological networks based on posterior probabilities of interactions.</p>
+<p>RevBayes and TreePPL offer models to infer host repertoire evolution, but no tools to parse the outputs. <em>evolnets</em> has the necessary tools to reconstruct ancestral ecological networks based on posterior probabilities of interactions.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>You can install evolnets like so:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="co"># library(devtools)</span></span>
+<code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://devtools.r-lib.org/" class="external-link">"devtools"</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
 <span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"maribraga/evolnets"</span>, build_vignettes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<!-- ## Introduction to evolnets -->
-<!-- You can learn about the package with an example in the vignette *Introduction to evolnets*. -->
-<!-- ``` r -->
-<!-- library(evolnets) -->
-<!-- # find all available vignettes -->
-<!-- browseVignettes("evolnets") -->
-<!-- # or go straight to the intro vignette -->
-<!-- vignette("intro_to_evolnets") -->
-<!-- ``` -->
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"maribraga/evolnets"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="about">About<a class="anchor" aria-label="anchor" href="#about"></a>
+</h2>
+<p>The evolnets package provides three categories of important functions: rates, ancestral states and samples.</p>
+<ul>
+<li><p>Rates: these functions are used to calculate effective rates of host-repertoire evolution: <code><a href="reference/events_counter.html">effective_rate( )</a></code>, <code><a href="reference/events_counter.html">count_events( )</a></code>, <code><a href="reference/events_counter.html">rate_gl( )</a></code>, <code><a href="reference/events_counter.html">count_gl( )</a></code>.</p></li>
+<li><p>Ancestral states: these functions are used to calculate the posterior probabilities of host-parasite interactions at internal nodes of the parasite tree or at specific time points in the past: <code><a href="reference/posterior_at_nodes.html">posterior_at_nodes( )</a></code>, <code><a href="reference/posterior_at_ages.html">posterior_at_ages( )</a></code>.</p></li>
+<li><p>Samples: these functions perform calculations for each sampled host-parasite network during MCMC: <code>samples_at_ages( )</code>, <code>Q_posterior_at_ages( )</code>, <code>NODF_posterior_at_ages( )</code>.</p></li>
+</ul>
+<p>See the full documentation at the <a href="https://maribraga.github.io/evolnets/">evolnets’ website</a>.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">

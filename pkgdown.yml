@@ -1,8 +1,11 @@
 pandoc: 3.1.11
 pkgdown: 2.2.0
 pkgdown_sha: ~
-articles: {}
-last_built: 2026-03-12T20:03Z
+articles:
+  articles/ancestral_networks: ancestral_networks.html
+  articles/ancestral_states: ancestral_states.html
+  articles/evolnets: evolnets.html
+last_built: 2026-03-12T21:26Z
 urls:
   reference: https://maribraga.github.io/evolnets/reference
   article: https://maribraga.github.io/evolnets/articles
