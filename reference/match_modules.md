@@ -1,7 +1,7 @@
 # Match modules of different ancestral networks across time.
 
 This function is called within
-[`modules_across_ages()`](https://maribraga.github.io/evolnets/reference/modules_across_ages.md)
+[`modules_across_ages()`](https://evonetslab.github.io/evolnets/reference/modules_across_ages.md)
 and gives the same name to modules from ancestral networks at different
 ages that contain the same symbiont species or their parental species.
 
@@ -20,7 +20,7 @@ match_modules(summary_networks, unmatched_modules, tree)
 - unmatched_modules:
 
   A data frame outputted from
-  [`modules_from_summary_networks()`](https://maribraga.github.io/evolnets/reference/modules_from_summary_networks.md)
+  [`modules_from_summary_networks()`](https://evonetslab.github.io/evolnets/reference/modules_from_summary_networks.md)
   containing: \$name of the network node (hosts and symbionts), \$age of
   the network, \$original_module assigned to the node, and \$type of the
   node (either "symbiont" or "host).

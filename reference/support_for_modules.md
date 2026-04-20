@@ -24,7 +24,7 @@ support_for_modules(
 - mod_samples:
 
   Data frame produced by
-  [`modules_from_samples()`](https://maribraga.github.io/evolnets/reference/modules_from_samples.md)
+  [`modules_from_samples()`](https://evonetslab.github.io/evolnets/reference/modules_from_samples.md)
   containing module membership of each node for each sampled network at
   each time slice before the present.
 
@@ -32,7 +32,7 @@ support_for_modules(
 
   Data frame containing the module information for the summary network.
   A `list` object returned from
-  [`modules_across_ages()`](https://maribraga.github.io/evolnets/reference/modules_across_ages.md)
+  [`modules_across_ages()`](https://evonetslab.github.io/evolnets/reference/modules_across_ages.md)
   or a `data.frame` object defining the modules in the networks. If a
   `data.frame` is passed, it must contain three columns: `$age` - the
   age of the network, `$name` - taxon names, `$module` - the module the

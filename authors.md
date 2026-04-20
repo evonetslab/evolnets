@@ -12,16 +12,16 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/maribraga/evolnets/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/evonetslab/evolnets/blob/main/DESCRIPTION)
 
 P Braga M, van der Bijl W, Landis M (2026). *evolnets: Reconstruct
 Ancestral Networks Inferred In RevBayes*. R package version 0.0.0.9000,
-<https://github.com/maribraga/evolnets>.
+<https://github.com/evonetslab/evolnets>.
 
     @Manual{,
       title = {evolnets: Reconstruct Ancestral Networks Inferred In RevBayes},
       author = {Mariana {P Braga} and Wouter {van der Bijl} and Michael Landis},
       year = {2026},
       note = {R package version 0.0.0.9000},
-      url = {https://github.com/maribraga/evolnets},
+      url = {https://github.com/evonetslab/evolnets},
     }

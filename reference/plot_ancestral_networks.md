@@ -27,7 +27,7 @@ plot_ancestral_networks(
 
   A list of lists containing the module information for each node at
   each network. Output of
-  [`modules_across_ages()`](https://maribraga.github.io/evolnets/reference/modules_across_ages.md).
+  [`modules_across_ages()`](https://evonetslab.github.io/evolnets/reference/modules_across_ages.md).
 
 - tree:
 

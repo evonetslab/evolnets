@@ -9,11 +9,11 @@ probabilities of interactions.
 
 Useful links:
 
-- <https://github.com/maribraga/evolnets>
+- <https://github.com/evonetslab/evolnets>
 
-- <https://maribraga.github.io/evolnets/>
+- <https://evonetslab.github.io/evolnets/>
 
-- Report bugs at <https://github.com/maribraga/evolnets/issues>
+- Report bugs at <https://github.com/evonetslab/evolnets/issues>
 
 ## Author
 

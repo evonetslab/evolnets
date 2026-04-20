@@ -15,7 +15,7 @@ posterior_at_nodes(history, tree, host_tree, nodes = NULL, state = c(2))
 
   Data frame with posterior samples of interaction histories returned
   from
-  [`read_history()`](https://maribraga.github.io/evolnets/reference/read_history.md).
+  [`read_history()`](https://evonetslab.github.io/evolnets/reference/read_history.md).
 
 - tree:
 

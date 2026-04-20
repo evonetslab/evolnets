@@ -1,7 +1,7 @@
 # Identify modules for each summary network at each age
 
 This function is called within
-[`modules_across_ages()`](https://maribraga.github.io/evolnets/reference/modules_across_ages.md).
+[`modules_across_ages()`](https://evonetslab.github.io/evolnets/reference/modules_across_ages.md).
 
 ## Usage
 

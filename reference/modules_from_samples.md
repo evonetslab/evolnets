@@ -13,7 +13,7 @@ modules_from_samples(sampled_networks)
 - sampled_networks:
 
   List of sampled networks at time slices produced by
-  [`get_sampled_networks()`](https://maribraga.github.io/evolnets/reference/get_sampled_networks.md).
+  [`get_sampled_networks()`](https://evonetslab.github.io/evolnets/reference/get_sampled_networks.md).
 
 ## Value
 

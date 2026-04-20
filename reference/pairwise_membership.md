@@ -13,7 +13,7 @@ pairwise_membership(mod_samples, ages, edge_list = TRUE)
 - mod_samples:
 
   Output from
-  [`modules_from_samples()`](https://maribraga.github.io/evolnets/reference/modules_from_samples.md)
+  [`modules_from_samples()`](https://evonetslab.github.io/evolnets/reference/modules_from_samples.md)
 
 - ages:
 

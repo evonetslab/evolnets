@@ -34,7 +34,7 @@ plot_ancestral_states(
 - at_nodes:
 
   A list of length 2, output from
-  [`posterior_at_nodes()`](https://maribraga.github.io/evolnets/reference/posterior_at_nodes.md).
+  [`posterior_at_nodes()`](https://evonetslab.github.io/evolnets/reference/posterior_at_nodes.md).
 
 - modules:
 

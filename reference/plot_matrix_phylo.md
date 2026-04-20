@@ -21,7 +21,9 @@ plot_matrix_phylo(
   point_size = 3,
   dodge_width = 0.025,
   colors = NULL,
-  ladderize = FALSE
+  ladderize = FALSE,
+  widths = c(1, 1),
+  heights = c(3, 1)
 )
 ```
 
@@ -37,7 +39,7 @@ plot_matrix_phylo(
 - at_nodes:
 
   A list of length 2, output from
-  [`posterior_at_nodes()`](https://maribraga.github.io/evolnets/reference/posterior_at_nodes.md).
+  [`posterior_at_nodes()`](https://evonetslab.github.io/evolnets/reference/posterior_at_nodes.md).
 
 - tree:
 
@@ -47,8 +49,6 @@ plot_matrix_phylo(
 - host_tree:
 
   The phylogeny belonging to the hosts. Object of class `phylo`.
-
-  See the examples on how to change the color scale.
 
 - type:
 
@@ -117,6 +117,20 @@ plot_matrix_phylo(
   what colors are used, you can add color scales to the resulting
   `ggplot`, e.g.
   [`ggplot2::scale_color_manual()`](https://ggplot2.tidyverse.org/reference/scale_manual.html).
+
+- widths:
+
+  Used in a call to
+  [`patchwork::wrap_plots()`](https://patchwork.data-imaginist.com/reference/wrap_plots.html).
+  The relative widths of each column in the plot grid.
+
+- heights:
+
+  Used in a call to
+  [`patchwork::wrap_plots()`](https://patchwork.data-imaginist.com/reference/wrap_plots.html).
+  The relative heights of each row in the plot grid.
+
+  See the examples on how to change the color scale.
 
 ## Value
 

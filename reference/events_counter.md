@@ -21,7 +21,7 @@ rate_gl(history, tree)
 
   A data frame containing the character history produced by RevBayes and
   read by
-  [`read_history()`](https://maribraga.github.io/evolnets/reference/read_history.md).
+  [`read_history()`](https://evonetslab.github.io/evolnets/reference/read_history.md).
 
 - tree:
 

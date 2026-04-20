@@ -40,7 +40,6 @@ We will need a few packages:
 ``` r
 library(evolnets)
 library(ape)
-library(treeio)
 library(dplyr)
 library(ggplot2)
 ```
@@ -54,14 +53,9 @@ and four pieces of data:
 - Matrix of extant interactions for plotting
 
 `evolnets` includes example data which we’ll use in this vignette. But
-when you use your own data, here is how you read them into R. The
-evolnets function `read_history` is designed specifically to read .txt
-files produced by RevBayes. As more inference methods become available,
-we will expand the scope of this function.
-
-``` r
-history <- read_history('history.txt', burnin = 0.1)
-```
+when you use your own data, simply replace the
+[`system.file()`](https://rdrr.io/r/base/system.file.html) call with the
+path for your files.
 
 Your phylogenetic trees need to be `phylo` objects, and many tree files
 can be read into R using the `ape` or `treeio` packages. One important
@@ -73,41 +67,37 @@ able to use them in R (using the
 Here’s how you do it:
 
 ``` r
+# read the symbiont tree exported from RevBayes 
+tree <- read_tree_from_revbayes(system.file("extdata", "tree_pieridae.tre", package = "evolnets"))
+
 # we don't need node labels for the host tree, so you can read it using ape::read.tree()
-host_tree <- read.tree('host_tree.tre')
-
-# read the symbiont tree exported from RevBayes with treeio::read.beast.newick()
-treeRev <- read.beast.newick("symbiont_tree.tre")
-
-# treeRev contains the tree
-tree <- treeRev@phylo
-
-# and more information, including
-# a data table with the node order from RevBayes ($index) and R ($node)
-index_node <- treeRev@data %>%
-  mutate(node = as.numeric(node)) %>%
-  arrange(node)
-
-# use node indices from RevBayes as node labels
-indices <- index_node %>% 
-  filter(node > Ntip(tree)) %>% 
-  pull(index)
-names(indices) <- NULL
-
-tree$node.label <- paste0("Index_",indices)
+host_tree <- ape::read.tree(system.file("extdata", "host_tree_pieridae.phy", package = "evolnets"))
 ```
 
-As I said before, in this vignette we’ll use the data that comes with
+The evolnets function `read_history` is designed specifically to read
+.txt files produced by RevBayes. As more inference methods become
+available, we will expand the scope of this function.
+
+``` r
+history <- read_history(system.file("extdata", "history_thin_pieridae.txt", package = "evolnets"))
+```
+
+Lastly, we need a matrix of extant interations.
+
+``` r
+matrix <- read.csv(
+  system.file("extdata", "interaction_matrix_pieridae.csv", package = "evolnets"),
+  row.names = 1) |> 
+  as.matrix()
+```
+
+As I said before, in this vignette we’ll use data that comes with
 evolnets. This data comes from a
 [paper](https://onlinelibrary.wiley.com/doi/10.1111/ele.13842) where we
 studied the evolution of interactions between Pieridae butterflies and
 their Angiosperm host plants. The results are not identical to the ones
 in the paper because we will use a subset of the MCMC samples in this
 example in order to reduce file size and speed up the analysis.
-
-``` r
-data(tree, host_tree, history, extant_net)
-```
 
 Now we can start extracting information from the inferred history.
 
@@ -119,21 +109,30 @@ are losses?
 
 ``` r
 (n_events <- count_events(history))
+#>       mean HPD95.lower HPD95.upper
+#> 1 148.4752         121         178
 (gl_events <- count_gl(history))
+#>    gains   losses 
+#> 75.60396 72.87129
 ```
 
-We estimated that 151 events happened across the diversification of
-Pieridae, being 75 host gains and 76 host losses. Similarly, we can
-calculate the rate of host-repertoire evolution across the branches of
-the symbiont tree, which is the number of events divided by the sum of
-branch lengths of the symbiont tree. In this case, we inferred that the
-rate of evolution is around 6 events every 100 million years, along each
-branch of the Pieridae tree.
+We estimated that, on average, 148.5 events happened across the
+diversification of Pieridae, being 75.6039604 host gains and 72.8712871
+host losses. Similarly, we can calculate the rate of host-repertoire
+evolution across the branches of the symbiont tree, which is the number
+of events divided by the sum of branch lengths of the symbiont tree.
 
 ``` r
 (rate <- effective_rate(history,tree))
+#>         mean HPD95.lower HPD95.upper
+#> 1 0.06170151  0.05028369  0.07397104
 (gl_rates <- rate_gl(history, tree))
+#>  gain_rate  loss_rate 
+#> 0.03141856 0.03028295
 ```
+
+In this case, we inferred that the rate of evolution is around 6 events
+every 100 million years, along each branch of the Pieridae tree.
 
 ## Ancestral states at internal nodes
 
@@ -152,6 +151,8 @@ the tree file exported by RevBayes.
 plot(tree, show.node.label = TRUE, cex = 0.5)
 ```
 
+![](evolnets_files/figure-html/unnamed-chunk-11-1.png)
+
 First, we’ll look at the host repertoires of the deepest nodes in the
 tree: nodes 128, 129, 130, and 131 (the root).
 
@@ -166,6 +167,11 @@ columns. Let’s have a look at a subset of those:
 
 ``` r
 pp_at_deep_nodes[, c("Fabaceae", "Capparaceae", "Rosaceae"), ]
+#>            Fabaceae Capparaceae Rosaceae
+#> Index_128 0.2475248   1.0000000        0
+#> Index_129 0.9702970   0.9009901        0
+#> Index_130 0.9603960   0.8316832        0
+#> Index_131 0.9603960   0.8415842        0
 ```
 
 We can see that Fabaceae was most likely an ancestral hosts for Pieridae
@@ -179,20 +185,27 @@ all internal nodes in the symbiont tree. For that, we have to choose a
 probability threshold over which to plot (default is 0.9). Ancestral
 states are colored by modules in the extant network, so we have to
 either define the modules first or let it be done within the plotting
-function. Let’s plot both trees, the interaction matrix, and the
-ancestral states at once, like so:
+function. As this is a stochastic process, the modules will change a
+little every time the
+[`plot_matrix_phylo()`](https://evonetslab.github.io/evolnets/reference/plot_matrix_phylo.md)
+is called.
+
+Let’s plot both trees, the interaction matrix, and the ancestral states
+at once, like so:
 
 ``` r
 at_nodes <- posterior_at_nodes(history, tree, host_tree)
 ```
 
 ``` r
-p <- plot_module_matrix2(extant_net, at_nodes, tree, host_tree)
+p <- plot_matrix_phylo(matrix, at_nodes, tree, host_tree)
 
 # adjust text size in the second panel
 p[[2]] <- p[[2]] + theme(axis.text = element_text(size = 4))
 p
 ```
+
+![](evolnets_files/figure-html/unnamed-chunk-15-1.png)
 
 ## Ancestral networks at specific time points
 
@@ -205,7 +218,7 @@ We can do this in two ways:
 
 ### Summary networks
 
-[`posterior_at_ages( )`](https://maribraga.github.io/evolnets/reference/posterior_at_ages.md)
+[`posterior_at_ages( )`](https://evonetslab.github.io/evolnets/reference/posterior_at_ages.md)
 finds the symbiont lineages that were extant at given time points in the
 past and calculates the posterior probability for interactions between
 these symbionts and each host based on samples from the MCMC. The first
@@ -215,32 +228,32 @@ posterior probabilities.
 ``` r
 ages <- c(60, 50, 40, 0)
 at_ages <- posterior_at_ages(history, ages, tree, host_tree)
-pp_at_ages <- at_ages[[2]]
 ```
 
 Then, we can make different interaction matrices based on two things:
 the minimum posterior probability for an interaction to be included in
-the network and whether we want a binary or a weighted network.
+the network, and whether we want a binary or a weighted network.
 
 ``` r
-weighted_nets_50 <- get_summary_network(pp_at_ages, ages, pt = 0.5, weighted = TRUE)
-binary_nets_90 <- get_summary_network(pp_at_ages, ages, pt = 0.9, weighted = FALSE)
+weighted_nets_50 <- get_summary_networks(at_ages, threshold = 0.5, weighted = TRUE)
+binary_nets_90 <- get_summary_networks(at_ages, threshold = 0.9, weighted = FALSE)
+
+#plot
 ```
 
 ### Sampled networks
 
 ``` r
-samples_at_ages <- at_ages$samples
+samples_at_ages <- get_sampled_networks(at_ages)
 ```
 
 Then, we can calculate network properties for each sampled network.
 
 ``` r
 # calculate posterior distribution of nestedness
-Nz <- index_at_ages(samples_at_ages, index = "NODF", nnull = 10)
+Nz <- index_at_ages_samples(samples_at_ages, index = "NODF", nnull = 10)
+
+#plot
 ```
 
-``` r
-# calculate posterior distribution of modularity (extremely slow)
-Qz <- index_at_ages(samples_at_ages, index = "Q", nnull = 10)
-```
+You can do the same for modularity, but the algorithm is much slower.

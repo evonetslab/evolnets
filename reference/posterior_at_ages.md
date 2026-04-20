@@ -23,7 +23,7 @@ posterior_at_ages(
 
   Data frame with posterior samples of interaction histories. Output
   from
-  [`read_history()`](https://maribraga.github.io/evolnets/reference/read_history.md).
+  [`read_history()`](https://evonetslab.github.io/evolnets/reference/read_history.md).
 
 - ages:
 
